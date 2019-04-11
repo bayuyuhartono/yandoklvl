@@ -19,7 +19,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Cek Status Pemesanan</h2>
+                        <h2>Cek Status Ajuan</h2>
                     </div>
                     <div class="body">
                         <form action="cek" id="form_advanced_validation" method="get">
@@ -70,8 +70,6 @@
                             </div>
                         @endforeach
                         @endif 
-
-
                     </div>
                 </div>
             </div>

@@ -94,7 +94,7 @@ class UploadCon extends Controller
             ]);
             Session::flush();
             Alert::success('Data Akan Diproses', 'Berhasil');
-            return view('pages/dashboard');
+            return redirect('beranda'); 
         } else {
             Alert::success('Kode Verifikasi Salah', 'Gagal');
             $request_in_db = DB::table('ajuan_temp')->where('uuid', $data_uuid)->first();

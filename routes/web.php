@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 //beranda
 Route::get('beranda', 'DashboardCon@index')->name('beranda');
+Route::get('ceknim', 'DashboardCon@cek')->name('ceknim');
 
 //pengumuman
 Route::get('pengumuman', 'PengumumanCon@index')->name('pengumuman');

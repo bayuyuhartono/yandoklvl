@@ -11,7 +11,10 @@
           <div class="menu">
             <ul class="list">
                 <!-- <li class="header">MAIN NAVIGATION</li> -->
-                <li {!! request()->is('beranda') ? ' class="active"' : '' !!}>
+                <li 
+                {!! request()->is('add') ? ' class="active"' : '' !!} 
+                {!! request()->is('beranda') ? ' class="active"' : '' !!}
+                {!! request()->is('ceknim') ? ' class="active"' : '' !!}>
                     <a href="{{ route('beranda') }}">
                         <i class="material-icons">home</i>
                         <span>Beranda</span>
@@ -26,7 +29,6 @@
                 <li 
                 {!! request()->is('ajuan') ? ' class="active"' : '' !!} 
                 {!! request()->is('otpcheck') ? ' class="active"' : '' !!}
-                {!! request()->is('add') ? ' class="active"' : '' !!} 
                 {!! request()->is('ajuancancel') ? ' class="active"' : '' !!} >
                     <a href="{{ route('ajuan') }}">
                         <i class="material-icons">add</i>
@@ -43,7 +45,7 @@
                         <i class="material-icons">publish</i>
                         <span>Upload Dokumen</span>
                     </a>
-                </li>
+                {{-- </li>
                 <li 
                 {!! request()->is('status') ? ' class="active"' : '' !!}
                 {!! request()->is('cek') ? ' class="active"' : '' !!}>
@@ -51,7 +53,7 @@
                         <i class="material-icons">history</i>
                         <span>Cek Status Pemesanan</span>
                     </a>
-                </li>
+                </li> --}}
                 <li {!! request()->is('alur') ? ' class="active"' : '' !!}>
                     <a href="{{ route('alur') }}">
                         <i class="material-icons">swap_calls</i>
@@ -76,7 +78,7 @@
           <!-- Footer -->
           <div class="legal">
               <div class="copyright">
-                  &copy; 2019 <a href="javascript:void(0);">Puskom - UNTAR.</a>.
+                  &copy; 2019 <a href="javascript:void(0);">Puskom - UNTAR</a>
               </div>
               <div class="version">
                   <b>Version: </b> 1.0.0

@@ -68,13 +68,6 @@
                                 </div>
                                 <div class="help-info">Nomor handphone yang dapat dihubungi</div>
                             </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="jumlah" min="5" max="20" value="{{ old('jumlah') }}"  required >
-                                    <label class="form-label">Jumlah Legalisir</label>
-                                </div>
-                                <div class="help-info">Jumlah lembar per dokumen, min: 5, max: 20</div>
-                            </div>
                             <button class="btn btn-primary waves-effect" type="submit" >SUBMIT</button>
                         </form>
                     </div>

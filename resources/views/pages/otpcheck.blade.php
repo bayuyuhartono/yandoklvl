@@ -77,7 +77,7 @@
                             </div>
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="jumlah" min="5" max="20" value="{{ $data->jumlah }}" ReadOnly required >
+                                    <input type="text" class="form-control" name="jumlah" min="5" max="20" value="10" ReadOnly required >
                                     <label class="form-label">Jumlah Legalisir</label>
                                 </div>
                                 <div class="help-info">Jumlah lembar per dokumen, min: 5, max: 20</div>

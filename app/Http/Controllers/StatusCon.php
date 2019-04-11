@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; 
+use Alert;
 
 class StatusCon extends Controller
 {
@@ -16,11 +15,9 @@ class StatusCon extends Controller
      */
     public function index()
     {
-        $ajuan = [];
-        $detail_ajuan = [];
         return view('pages/status',[
-            'ajuan' => $ajuan, 
-            'detail_ajuan' => $detail_ajuan
+            'ajuan' => [], 
+            'detail_ajuan' => []
             ]);
     }
 
@@ -49,6 +46,9 @@ class StatusCon extends Controller
         ->orderBy('ajuan_history.recid','asc')
         ->get();
 
+        if ($ajuan->isEmpty()) {
+            Alert::success('', 'Data Pengajuan Nim Ini Tidak Ada');
+        }
         // mengirim data detail_ajuan ke view index
         return view('pages/status',[
             'ajuan' => $ajuan, 

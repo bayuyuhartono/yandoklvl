@@ -12,7 +12,7 @@
             </a>
         </li>
     </ol>
-    <div class="row clearfix">
+    {{-- <div class="row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <a href="{{ route('pengumuman') }}">
                 <div class="info-box bg-pink hover-expand-effect">
@@ -64,6 +64,122 @@
                     </div>
                 </div>
             </a>
+        </div>
+    </div> --}}
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Cek Status Ajuan</h2>
+                </div>
+                <div class="body">
+                    <form action="ceknim" id="form_advanced_validation" method="get">
+                        <div class="input-group">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">autorenew</i>
+                                    </span>
+                                    <div class="form-line">
+                                            <input type="text" class="form-control" name="nimcari" maxlength="9" minlength="7" value="" placeholder="Masukan NIM Anda.." required >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn bg-teal waves-effect" type="submit" >Cek Ajuan</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    @if (count($ajuan) > 0)
+                    @foreach($ajuan as $a)
+                        <div class="panel-group" id="accordion_11" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-col-teal">
+                                <div class="panel-heading" role="tab" id="headingOne_11">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion_11" href="#collapseOne_11" aria-expanded="true" aria-controls="collapseOne_11">
+                                            Pengajuan Pada Tanggal : {{ $a->tgl_ajuan }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne_11" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_11">
+                                    <div class="panel-body">
+                                        @foreach ($detail_ajuan as $det)
+                                            @if ($det->uuid === $a->uuid)
+                                                <ol class="breadcrumb">
+                                                    <li>
+                                                        <i class="material-icons">done</i> 
+                                                        {{ $det->nama_status }}
+                                                        ({{ $det->tanggal }})
+                                                    </li>
+                                                </ol>
+                                            @endif                    
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    @endif 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        Daftar Pengajuan Legalisir Online
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Nim</th>
+                                    <th>Tanggal</th>
+                                    <th>Status Terakhir</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Nim</th>
+                                    <th>Tanggal</th>
+                                    <th>Status Terakhir</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @forelse ($ajuan_timeline as $item)
+                                <tr>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->nim }}</td>
+                                    <td>{{ $item->tgl_ajuan }}</td>
+                                    <td>{{ $item->kode_status }}</td>
+                                </tr>
+                                @empty
+                                    
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

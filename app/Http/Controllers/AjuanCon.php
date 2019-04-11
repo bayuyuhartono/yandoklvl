@@ -22,11 +22,7 @@ class AjuanCon extends Controller
             Session::flush();
         };
         if (!Session::get('setsession')) {
-            $timestamp = time();
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $sess_data = [];
-            $sess_data['sess_id'] = md5($timestamp . "_" . $ip);
-            $sess_data['sess_lock'] = 0;
+            $sess_data = sessgen();
             Session::put('setsession', $sess_data);
         }
 
@@ -55,7 +51,7 @@ class AjuanCon extends Controller
                 'nama' => $request->nama,
                 'nim' => $request->nim,
                 'email' => $request->email,
-                'jumlah' => $request->jumlah,
+                'jumlah' => 10,
                 'tgl_ajuan' => $sekarang,
                 'telepon' => $request->telepon,
                 'handphone' => $request->handphone,
@@ -69,7 +65,7 @@ class AjuanCon extends Controller
             ]);
             Session::flush();
             Alert::success('Data Akan Diproses', 'Berhasil');
-            return view('pages/dashboard');
+            return redirect('beranda'); 
         } else {
             Alert::success('Kode Verifikasi Salah', 'Gagal');
             return view('pages/otpcheck', ['data' => $request]);
@@ -89,7 +85,6 @@ class AjuanCon extends Controller
             'nama' => 'required|min:3|max:30',
             'nim' => 'required',
             'email' => 'required',
-            'jumlah' => 'required|numeric',
             'telepon' => 'required',
             'handphone' => 'required',
         ]);
@@ -119,7 +114,7 @@ class AjuanCon extends Controller
                 'nama' => $request->nama,
                 'nim' => $request->nim,
                 'email' => $request->email,
-                'jumlah' => $request->jumlah,
+                'jumlah' => 10,
                 'tgl_ajuan' => $sekarang,
                 'telepon' => $request->telepon,
                 'handphone' => $request->handphone,
@@ -134,6 +129,16 @@ class AjuanCon extends Controller
         }
     }
 
+}
+
+function sessgen()
+{
+    $timestamp = time();
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $sess_data = [];
+    $sess_data['sess_id'] = md5($timestamp . "_" . $ip);
+    $sess_data['sess_lock'] = 0;
+    return $sess_data;
 }
 
 function save_mail($kepada, $subject, $pesan)
