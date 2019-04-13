@@ -175,6 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class, //jwtauth
 
     ],
 
@@ -228,7 +229,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class, //flash message
         'Carbon' => 'Carbon\Carbon',
-
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class, //jwtauth
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory', //jwtauth
     ],
 
 ];

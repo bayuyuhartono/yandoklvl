@@ -97,8 +97,8 @@
                             <div class="panel panel-col-teal">
                                 <div class="panel-heading" role="tab" id="headingOne_11">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion_11" href="#collapseOne_11" aria-expanded="true" aria-controls="collapseOne_11">
-                                            Pengajuan Pada Tanggal : {{ $a->tgl_ajuan }}
+                                        <a role="button" data-parent="#accordion_11" href="#collapseOne_11" aria-expanded="false" aria-controls="collapseOne_11">
+                                           Pengajuan Pada Tanggal : {{ $a->tgl_ajuan }}
                                         </a>
                                     </h4>
                                 </div>
