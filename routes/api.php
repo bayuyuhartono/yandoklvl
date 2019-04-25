@@ -23,10 +23,11 @@ Route::get('test', function () {
 
 Route::post('register', 'APIuserController@register');
 Route::post('login', 'APIuserController@authenticate');
-Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => 'jwt.verify'], function () { 
     Route::get('user', 'APIuserController@getAuthenticatedUser');
-    Route::get('ajuan', 'APIajuanCon@getajuan');
-    Route::post('prosesajuan', 'APIajuanCon@proses');
+    Route::get('ajuan', 'APIajuanCon@getsession');
+    Route::get('ajuan/status/{nim}', 'APIajuanCon@getajuanstatus');
+    Route::post('ajuan/proses_temp', 'APIajuanCon@proses_temp');
+    Route::post('ajuan/store', 'APIajuanCon@store');
 });

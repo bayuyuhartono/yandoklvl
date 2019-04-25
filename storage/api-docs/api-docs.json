@@ -1,0 +1,247 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Universitas Tarumanagara API",
+        "contact": {
+            "email": "bayup@staff.untar.ac.id"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Return a user's first and last name",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Your Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Your Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/ajuan": {
+            "get": {
+                "tags": [
+                    "Ajuan"
+                ],
+                "description": "Return a user's first and last name",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/ajuan/status/{nim}": {
+            "get": {
+                "tags": [
+                    "Ajuan"
+                ],
+                "description": "Return a user's first and last name",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nim",
+                        "in": "path",
+                        "description": "Nim",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/ajuan/proses_temp": {
+            "post": {
+                "tags": [
+                    "Ajuan"
+                ],
+                "description": "Return a user's first and last name",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "formData",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "description": "nama",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nim",
+                        "in": "formData",
+                        "description": "Nim",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "telepon",
+                        "in": "formData",
+                        "description": "telepon",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "handphone",
+                        "in": "formData",
+                        "description": "handphone",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/ajuan/store": {
+            "post": {
+                "tags": [
+                    "Ajuan"
+                ],
+                "description": "Return a user's first and last name",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "formData",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "description": "nama",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nim",
+                        "in": "formData",
+                        "description": "Nim",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "telepon",
+                        "in": "formData",
+                        "description": "telepon",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "handphone",
+                        "in": "formData",
+                        "description": "handphone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "otptext",
+                        "in": "formData",
+                        "description": "otptext",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
