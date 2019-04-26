@@ -33,6 +33,7 @@ Route::get('uploadcancel', 'UploadCon@index')->name('uploadcancel');
 Route::get('cekupload', 'UploadCon@cekupload')->name('cekupload');
 Route::post('otpupload', 'UploadCon@proses')->name('otpupload');
 Route::post('send', 'UploadCon@store')->name('send');
+Route::post('tranfupload', 'UploadCon@tranf')->name('tranfupload');
 
 //status
 Route::get('status', 'StatusCon@index')->name('status');

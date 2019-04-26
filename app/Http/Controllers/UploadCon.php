@@ -39,14 +39,17 @@ class UploadCon extends Controller
         // menangkap data pencarian
         $cari = $request->nim_up;
         $data = '0';
-        $upload = DB::table('ajuan')->select('uuid', 'nama', 'email', 'nim', 'kode_status')
+        $user_upload = DB::table('ajuan')->select('uuid', 'nama', 'email', 'nim', 'kode_status')
             ->where('nim', $cari)
             ->orderBy('tgl_ajuan', 'desc')
             ->first();
-        if ($upload != null) {
-            if ($upload->kode_status == 8) {
-                Session::put('sessionuuidajuan', $upload->uuid);
-                $data = '1';
+        if ($user_upload != null) {
+            if ($user_upload->kode_status == 8) {
+                Session::put('sessionuuidajuan', $user_upload->uuid);
+                $data = 01;
+            } elseif ($user_upload->kode_status == 2) {
+                Session::put('sessionuuidajuan', $user_upload->uuid);
+                $data = 02;
             } else {
                 Alert::success('', 'Tidak Ada Permintaan Upload Untuk NIM ini');
             }
@@ -57,7 +60,7 @@ class UploadCon extends Controller
         // mengirim data detail_ajuan ke view index
         return view('pages/upload', [
             'data' => $data,
-            'user' => $upload,
+            'user' => $user_upload,
         ]);
     }
 
@@ -94,7 +97,7 @@ class UploadCon extends Controller
             ]);
             Session::flush();
             Alert::success('Data Akan Diproses', 'Berhasil');
-            return redirect('beranda'); 
+            return redirect('beranda');
         } else {
             Alert::success('Kode Verifikasi Salah', 'Gagal');
             $request_in_db = DB::table('ajuan_temp')->where('uuid', $data_uuid)->first();
@@ -154,6 +157,39 @@ class UploadCon extends Controller
             $request_in_db = DB::table('ajuan_temp')->where('uuid', $data_uuid)->first();
             return view('pages/otpupload', ['data' => $request_in_db]);
         }
+    }
+
+    public function tranf(Request $request)
+    {
+        $this->validate($request, [
+            'tranf' => 'required',
+        ]);
+
+        $name = 'bp-' . $request->nim1 . '.' . 'pdf';
+        $path = Storage::putFileAs(
+            'public/file_upload', $request->file('tranf'), $name
+        );
+        $request->tranf = $name;
+
+        $data_uuid = Session::get('setsession');
+        $data_uuid_base = Session::get('sessionuuidajuan');
+        $sekarang = date('Y-m-d H:i:s');
+        // insert data ke table ajuan
+        DB::table('ajuan')
+            ->where('uuid', $data_uuid_base)
+            ->update([
+                'doc_transfer' => $request->tranf,
+                'kode_status' => '05',
+            ]);
+        DB::table('ajuan_history')->insert([
+            'uuid_ajuan' => $data_uuid_base,
+            'kode_status' => '05',
+            'tanggal' => $sekarang,
+            'oleh' => $data_uuid['sess_id'],
+        ]);
+        Session::flush();
+        Alert::success('Data Akan Diproses', 'Berhasil');
+        return redirect('beranda');
     }
 }
 

@@ -88,6 +88,30 @@
                         </div>
                         <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
                     </form>
+                    @elseif ($data == '2')
+                    <!-- </form> -->
+                    <form action="upload">
+                        <button class="btn btn-primary waves-effect" type="submit">Kembali</button>
+                    </form>
+                    <form action="tranfupload" id="form_advanced_validation" enctype="multipart/form-data" method="POST">
+                            {{ csrf_field() }}
+                        <br>
+                        <div class="form-group">
+                            <b>NIM</b>
+                            <div class="form-line">
+                                <input type="text" value={{ $user->nim }} class="form-control" name="nim1" Readonly>
+                                <!-- <label class="form-label">Upload Ijazah</label> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <b>Upload Bukti Transfer</b>
+                            <div class="form-line">
+                                <input type="file" class="form-control" name="tranf" accept="application/pdf" required>
+                                <!-- <label class="form-label">Upload Transkrip</label> -->
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                    </form>
                     @endif
         		</div>
         	</div>

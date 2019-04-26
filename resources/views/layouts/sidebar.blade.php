@@ -39,6 +39,7 @@
                 {!! request()->is('upload') ? ' class="active"' : '' !!}
                 {!! request()->is('cekupload') ? ' class="active"' : '' !!}
                 {!! request()->is('otpupload') ? ' class="active"' : '' !!}  
+                {!! request()->is('tranfupload') ? ' class="active"' : '' !!}  
                 {!! request()->is('uploadcancel') ? ' class="active"' : '' !!}
                 {!! request()->is('send') ? ' class="active"' : '' !!}> 
                     <a href="{{ route('upload') }}">
